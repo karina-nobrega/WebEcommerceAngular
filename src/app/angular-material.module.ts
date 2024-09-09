@@ -1,5 +1,6 @@
-
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +20,30 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatTableModule } from '@angular/material/table';
 
+
 @NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatChipsModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatRadioModule,
+    MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    MatTableModule
+  ],
   exports: [
     MatButtonModule,
     MatCardModule,
@@ -41,7 +65,4 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule
   ]
 })
-
-export class DemoAngularMaterialModule {
-
-}
+export class AngularMaterialModule { }

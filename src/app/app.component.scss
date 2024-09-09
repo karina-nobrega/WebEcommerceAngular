@@ -1,31 +1,30 @@
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
-
-.navbar{
+.navbar {
   display: flex;
   align-items: center;
   padding: 0 16px;
+  background-color: red;
 }
 
-.navbar-brand{
+.navbar-brand {
   font-size: 20px;
   font-weight: 600;
   margin-right: 16px;
 }
 
-.spacer{
+.spacer {
   flex: 1;
 }
 
-button{
+button {
   color: white;
   text-transform: uppercase;
   margin-left: 8px;
 }
 
-button.active{
+button.active {
   font-weight: 600;
 }
 
-.custom-toolbar{
+.custom-toolbar {
   background-color: red;
 }
