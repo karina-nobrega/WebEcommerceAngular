@@ -14,6 +14,7 @@ export class SignupComponent {
 
   signupForm!: FormGroup;
   hidePassword = true;
+outline: FormGroup<any>;
 
   constructor(
     private fb: FormBuilder,
