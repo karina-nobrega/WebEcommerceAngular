@@ -11,10 +11,11 @@ const BASIC_URL = "http://localhost:8080/";
 
 export class AuthService {
 
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
     private userStorageService: UserStorageService) { }
 
-  register(signupRequest: any): Observable<any> {
+  register(signupRequest:any): Observable<any> {
     return this.http.post(BASIC_URL + "sign-up", signupRequest);
   }
 

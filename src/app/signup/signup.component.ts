@@ -14,7 +14,6 @@ export class SignupComponent {
 
   signupForm!: FormGroup;
   hidePassword = true;
-outline: FormGroup<any>;
 
   constructor(
     private fb: FormBuilder,
@@ -26,10 +25,32 @@ outline: FormGroup<any>;
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      nome: [null, [Validators.required]],
+      name: [null, [Validators.required]],
+      dataNasc: [null, [Validators.required]],
+      genero: [null, [Validators.required]],
+      cpf: [null, [Validators.required]],
+      telefone: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
       confirmPassword: [null, [Validators.required]],
+      enderecoCobrança: [false],
+      enderecoEntrega: [false],
+      identEndereco: [null, [Validators.required]],
+      cep: [null, [Validators.required]],
+      logradouro: [null, [Validators.required]],
+      endereco: [null, [Validators.required]],
+      numeroEnd: [null, [Validators.required]],
+      complemento: [null, [Validators.required]],
+      bairro: [null, [Validators.required]],
+      cidade: [null, [Validators.required]],
+      estado: [null, [Validators.required]],
+      pais: [null, [Validators.required]],
+      numCartao: [null, [Validators.required]],
+      validade: [null, [Validators.required]],
+      codSeguranca: [null, [Validators.required]],
+      nomeCartao: [null, [Validators.required]],
+      bandCartao: [null, [Validators.required]],
+      cartaoFavorito: [false],
     })
   }
 
@@ -37,9 +58,13 @@ outline: FormGroup<any>;
     this.hidePassword = !this.hidePassword;
   }
 
+  onCancel() {
+    this.signupForm.reset();
+  }
+
   onSubmit(): void {
     const password = this.signupForm.get('password')?.value;
-    const confirmPassword = this.signupForm.get('confirmpassword')?.value;
+    const confirmPassword = this.signupForm.get('confirmPassword')?.value;
 
     if (password !== confirmPassword) {
       this.snackBar.open('As senhas não são iguais', 'Close', { duration: 5000, panelClass: 'error-snackbar' });

@@ -1,65 +1,216 @@
 <div class="container">
   <mat-card>
-    <mat-card-title>Title</mat-card-title>
+    <mat-card-title>CADASTRA-SE</mat-card-title>
 
     <mat-card-content>
-      <form [formGroup]="outline">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <!-- Dados Pessoais Section -->
+        <section>
+          <h3> Dados Pessoais:</h3>
 
-        <mat-form-field appearence="outline">
-          <mat-label>Nome</mat-label>
-          <input matInput formControlName="nome" placeholder="Nome" required>
+          <mat-form-field appearance="outline">
+            <mat-label>Nome Completo:</mat-label>
+            <input matInput formControlName="name" required />
+          </mat-form-field>
 
-          <mat-error *ngIf="signupForm.get('nome').invalid && signupForm.get('nome').touched">
-            Por favor, insira um nome válido!
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Data de Nascimento:</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataNasc" required />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
-        <mat-form-field appearence="outline">
-          <mat-label>E-mail</mat-label>
-          <input matInput formControlName="email" placeholder="Email" required>
+          <mat-form-field appearance="outline">
+            <mat-label>Gênero</mat-label>
+            <mat-select formControlName="genero" required>
+              <mat-option value="Feminino">Feminino</mat-option>
+              <mat-option value="Masculino">Masculino</mat-option>
+              <mat-option value="Outros">Outros</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-          <mat-error *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched">
-            Por favor, insira um e-mail válido!
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input matInput formControlName="cpf" placeholder="123.456.789-00" required />
+          </mat-form-field>
 
-        <mat-form-field appearence="outline">
-          <mat-label>Senha</mat-label>
-          <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" placeholder="Senha"
-            required>
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="telefone" placeholder="(11) 91234-7895" required />
+          </mat-form-field>
+        </section>
 
-          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
-            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
+        <!-- E-mail e Senha Section -->
+        <section>
+          <h3>E-mail e Senha de Cadastro:</h3>
 
-          <mat-error *ngIf="signupForm.get('senha').invalid && signupForm.get('senha').touched">
-            Por favor, insira uma senha válida!
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>E-mail:</mat-label>
+            <input matInput formControlName="email" placeholder="E-mail" required>
 
-        <mat-form-field appearence="outline">
-          <mat-label>Confirmar Senha</mat-label>
-          <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="confirmpassword"
-            placeholder="Confirmar Senha" required>
+            <mat-error *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched">Por favor, insira um
+              e-mail válido.</mat-error>
+          </mat-form-field>
 
-          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
-            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
+          <mat-form-field appearance="outline">
+            <mat-label>Senha:</mat-label>
+            <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password"
+              placeholder="Senha" required>
 
-          <mat-error *ngIf="signupForm.get('confirmpassword').invalid && signupForm.get('confirmpassword').touched">
-            Confirmar Senha!
-          </mat-error>
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon class="mat-18">{{ hidePassword ? 'visibility_off' : 'visibility' }} </mat-icon>
+            </button>
 
-          <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid" (click)="onSubmit()">
-            Cadastrar-se
-          </button>
-        </mat-form-field>
+            <mat-error *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched">
+              Por favor, insira uma senha válida.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Confirmar Senha:</mat-label>
+            <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password"
+              placeholder="Senha" required>
+
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon class="mat-18">{{ hidePassword ? 'visibility_off' : 'visibility' }} </mat-icon>
+            </button>
+
+            <mat-error *ngIf="signupForm.get('confirmPassword').invalid && signupForm.get('confirmPassword').touched">
+              Por favor, insira uma senha válida.
+            </mat-error>
+          </mat-form-field>
+        </section>
+
+        <!-- Endereço Section -->
+        <section>
+          <h3>Endereço:</h3>
+
+          <mat-checkbox formControlName="enderecoCobranca">Endereço de Cobrança</mat-checkbox>
+          <mat-checkbox formControlName="enderecoEntrega">Endereço de Entrega</mat-checkbox>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Identificação do Endereço</mat-label>
+            <mat-select formControlName="identEndereco" required>
+              <mat-option value="Casa">Casa</mat-option>
+              <mat-option value="Trabalho">Trabalho</mat-option>
+              <mat-option value="Loja">Loja</mat-option>
+              <mat-option value="Escola">Escola</mat-option>
+              <mat-option value="Faculdade">Faculdade</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>CEP</mat-label>
+            <input matInput formControlName="cep" placeholder="01234-567" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Logradouro</mat-label>
+            <mat-select formControlName="logradouro" required>
+              <mat-option value="avenida">Avenida</mat-option>
+              <mat-option value="rua">Rua</mat-option>
+              <mat-option value="rodovia">Rodovia</mat-option>
+              <mat-option value="travessa">Travessa</mat-option>
+              <mat-option value="estrada">Estrada</mat-option>
+              <mat-option value="rotatoria">Rotatória</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Endereço:</mat-label>
+            <input matInput formControlName="endereco" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Número:</mat-label>
+            <input matInput formControlName="numeroEnd" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Complemento:</mat-label>
+            <input matInput formControlName="complemento" placeholder="Casa/Apto" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Bairro:</mat-label>
+            <input matInput formControlName="bairro" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Cidade:</mat-label>
+            <input matInput formControlName="cidade" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Estado:</mat-label>
+            <input matInput formControlName="estado" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>País:</mat-label>
+            <mat-select formControlName="pais" required>
+              <mat-option value="Brasil">Brasil</mat-option>
+              <mat-option value="Alemanha">Alemanha</mat-option>
+              <mat-option value="Estados Unidos">Estados Unidos</mat-option>
+              <mat-option value="China">China</mat-option>
+              <mat-option value="Grécia">Grécia</mat-option>
+              <mat-option value="Austrália">Austrália</mat-option>
+              <mat-option value="Canadá">Canadá</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
+
+        <!-- Informações de Pagamento Section -->
+        <section>
+          <h3>Informações de Pagamento</h3>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Número do Cartão</mat-label>
+            <input matInput formControlName="numCartao" placeholder="0000 1111 2222 3333" required />
+
+            <mat-error *ngIf="signupForm.get('numCartao').invalid && signupForm.get('numCartao').touched">
+              Por favor, insira um número de Cartão válido.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Validade:</mat-label>
+            <input matInput formControlName="validade" placeholder="mês/ano" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>CVV:</mat-label>
+            <input matInput formControlName="codSeguranca" placeholder="123" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Nome do Cartão</mat-label>
+            <input matInput formControlName="nomeCartao" placeholder="Conforme escrito no cartão" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Bandeira do Cartão:</mat-label>
+            <mat-select formControlName="bandCartao" required>
+              <mat-option value="visa">Visa</mat-option>
+              <mat-option value="mastercard">Mastercard</mat-option>
+              <mat-option value="elo">Elo</mat-option>
+              <mat-option value="Hipercard">Hipercard</mat-option>
+              <mat-option value="maestro">Maestro</mat-option>
+              <mat-option value="american express">American Express (Amex)</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-checkbox formControlName="cartaoFavorito">Favoritar Cartão</mat-checkbox>
+        </section>
+
+        <!-- Footer Actions -->
       </form>
+      
+        <footer>
+          <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+          <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+        </footer>
 
     </mat-card-content>
-
-    <mat-card-footer>
-      Footer
-    </mat-card-footer>
   </mat-card>
 </div>

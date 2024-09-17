@@ -1,3 +1,4 @@
+import { ProductsComponent } from './products/products.component';
 import { RouterModule } from '@angular/router';
 
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -16,7 +17,8 @@ import { AngularMaterialModule } from './angular-material.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

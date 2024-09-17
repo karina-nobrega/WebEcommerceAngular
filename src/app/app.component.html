@@ -1,9 +1,39 @@
-<mat-toolbar color="primary" class="navbar">
+<div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+
+<mat-toolbar class="navbar">
   <span class="navbar-brand">Recanto da Mesa-Posta</span>
   <span class="spacer"></span>
-  <button mat-button routerLink="/product" routerLinkActive="active">Produtos</button>
+  <button mat-button routerLink="/products" routerLinkActive="active">Produtos</button>
   <button mat-button routerLink="/signup" routerLinkActive="active">Cadastre-se</button>
   <button mat-button routerLink="/login" routerLinkActive="active">Entrar</button>
 </mat-toolbar>
+</div>
 
+<div *ngIf="!isAdminLoggedIn">
+
+  <mat-toolbar class="navbar">
+    <span class="navbar-brand">Recanto da Mesa-Posta</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</button>
+    <button mat-button routerLink="/admin/analytics" routerLinkActive="active">Analytics</button>
+    <button mat-button routerLink="/admin/category" routerLinkActive="active">Categoria</button>
+    <button mat-button routerLink="/admin/products" routerLinkActive="active">Produtos</button>
+    <button mat-button routerLink="/admin/orders" routerLinkActive="active">Orders</button>
+    <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
+  </mat-toolbar>
+</div>
+
+<div *ngIf="!isCustomerLoggedIn">
+
+  <mat-toolbar class="navbar">
+    <span class="navbar-brand">Recanto da Mesa-Posta</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</button>
+    <button mat-button routerLink="/customer/cart" routerLinkActive="active">Cart</button>
+    <button mat-button routerLink="/customer/my_orders" routerLinkActive="active">Orders</button>
+    <button mat-button routerLink="/customer/wishlist" routerLinkActive="active">Wishlist</button>
+    <button mat-button routerLink="/customer/profile" routerLinkActive="active">Profile</button>
+    <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
+  </mat-toolbar>
+</div>
 <router-outlet></router-outlet>

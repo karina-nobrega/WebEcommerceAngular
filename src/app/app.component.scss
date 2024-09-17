@@ -1,13 +1,17 @@
 .navbar {
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 2% 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 5px rgba(214, 152, 80, 0.705);
 }
 
 .navbar-brand {
   font-size: 20px;
   font-weight: 600;
   margin-right: 16px;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(214, 152, 80, 0.705);
 }
 
 .spacer {
@@ -22,8 +26,4 @@ button {
 
 button.active {
   font-weight: 600;
-}
-
-.custom-toolbar {
-  background-color: red;
 }
