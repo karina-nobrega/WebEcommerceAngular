@@ -1,3 +1,4 @@
+import { PostProductComponent } from './components/post-product/post-product.component';
 import { PostCategoryComponent } from './components/post-category/post-category.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,6 +9,7 @@ const routes: Routes = [
   { path: '', component: AdminComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'category', component: PostCategoryComponent },
+  { path: 'product', component: PostProductComponent },
 ];
 
 @NgModule({

@@ -1,4 +1,3 @@
-import { ProductsComponent } from './products/products.component';
 import { RouterModule } from '@angular/router';
 
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -12,13 +11,18 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AngularMaterialModule } from './angular-material.module';
+import { PostCategoryComponent } from './admin/components/post-category/post-category.component';
+import { PostProductComponent } from './admin/components/post-product/post-product.component';
+import { DashboardComponent } from './customer/components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ProductsComponent,
+    PostCategoryComponent,
+    PostProductComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
