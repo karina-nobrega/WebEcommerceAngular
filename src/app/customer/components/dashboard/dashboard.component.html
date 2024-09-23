@@ -1,19 +1,47 @@
-<mat-card class="example-card" appearance="outlined">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="/src/imgs/background3.png" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card>
+<form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
+  <mat-form-field appearance="outline" class="search-input">
+    <mat-label>Buscar Produto</mat-label>
+    <input matInput formControlName="title">
+
+    <button mat-button matSuffix color="primary" [disabled]="searchProductForm.invalid">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
+<div class="product-list">
+  <mat-card class="product-card" *ngFor="let product of products">
+    <div class="product-image">
+      <img [src]="product.processedImg" alt="product-image">
+    </div><!--product-image-->
+
+    <div class="product-details">
+      <h2 class="product-name">{{ product.name }}</h2>
+      <p class="product-description">{{ product.description }}</p>
+
+      <mat-divider></mat-divider>
+
+      <div class="product-info">
+        <div class="info-row">
+          <span class="info-label">Preço:</span>
+          <span class="info-value">${{ product.price }}</span>
+        </div><!--info-row-->
+
+        <div class="info-row">
+          <span class="info-label">Categoria:</span>
+          <span class="info-value">{{ product.categoryName }}</span>
+        </div><!--info-row-->
+
+        <mat-divider></mat-divider>
+
+        <div class="actions">
+
+          <button mat-raised-button color="primary" class="update-button"
+            (click)="addToCart(product.id)">Adicionar ao Carrinho</button>
+        </div>
+
+      </div><!--product-info-->
+    </div><!--product-details-->
+
+  </mat-card>
+</div><!--product-list-->

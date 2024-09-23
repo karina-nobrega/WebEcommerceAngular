@@ -1,0 +1,63 @@
+<div **ngIf="cartItems.length > 0; else emptyCart">
+  <div class="cart-container">
+    <div class="cart-item" **ngFor="let item of cartItems">
+      <div class="product-info">
+        <div class="product-image">
+          <img [src]="item.processedImg" alt="product-image">
+        </div><!--product-image-->
+
+        <div class="product-details">
+          <div class="item-row">
+            <div class="item-name" [ngClass]="{ 'highlight': item.highlighted }">
+              {{ item.productName }}
+            </div><!--item-name-->
+
+            <div class="item-price">{{ item.price | currency }}</div>
+            <div class="quantity-controls">
+              <button mat-icon-button [disabled]="item.quantity == 1" (click)="decreaseQuantity(item.productId)">
+                <mat-icon>remove_circle_outline</mat-icon>
+              </button>
+              <span class="quantity">{{ item.quantity }}</span>
+              <button mat-icon-button (click)="increaseQuantity(item.productId)">
+                <mat-icon>add_circle_outline</mat-icon>
+              </button>
+
+            </div><!--quantity-controls-->
+          </div><!--item-row-->
+        </div><!--products-details-->
+      </div><!--product-info-->
+    </div><!--cart-item-->
+
+    <div class="total-price">
+      Subtotal: {{ order.totalAmount | currency }}
+    </div><!--total-price-->
+    <div class="total-price">
+      Total: {{ order.amount | currency }}
+    </div><!--total-price-->
+    <div class="total-price" *ngIf="order.couponName != null">
+      Cupom Aplicado: {{ order.couponName }}
+    </div><!--total-price-->
+    <div>
+      <button mat-raised-button color="primary">Realizar Pedido</button>
+    </div>
+  </div><!--cart-container-->
+
+  <div class="container" *ngIf="order.couponName == null">
+    <form [formGroup]="couponForm" (ngSubmit)="applyCoupon()">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Código:</mat-label>
+        <input matInput type="text" placeholder="Código" formControlName="code">
+        <mat-error *ngIf="couponForm.get('code')?.hasError('required')">Campo de preenchimento obrigatório!</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Aplicar Cupom</button>
+    </form>
+  </div>
+</div>
+
+<ng-template #emptyCart>
+  <div class="empty-cart">
+    <mat-icon class="icon">remove_shopping-cart</mat-icon>
+    <span>Nada para ver aqui.</span>
+  </div><!--empty-cart-->
+</ng-template>

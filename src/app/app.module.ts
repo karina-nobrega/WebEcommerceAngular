@@ -1,3 +1,6 @@
+import { CouponsComponent } from './admin/components/coupons/coupons.component';
+import { PostCouponComponent } from './admin/components/post-coupon/post-coupon.component';
+import { CartComponent } from './customer/components/dashboard/cart/cart.component';
 import { RouterModule } from '@angular/router';
 
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -22,7 +25,11 @@ import { DashboardComponent } from './customer/components/dashboard/dashboard.co
     SignupComponent,
     PostCategoryComponent,
     PostProductComponent,
+    PostCouponComponent,
     DashboardComponent,
+    CartComponent,
+    CouponsComponent
+
   ],
   imports: [
     BrowserModule,

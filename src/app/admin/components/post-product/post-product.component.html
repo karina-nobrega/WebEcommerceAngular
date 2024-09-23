@@ -33,13 +33,13 @@
       <mat-error *ngIf="productForm.get('name')?.hasError('required')" > Campo é de preenchimento Obrigatório!</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="form-field">
       <mat-label>Valor R$</mat-label>
       <input matInput type="number" placeholder="Valor R$" formControlName="price">
       <mat-error *ngIf="productForm.get('price')?.hasError('required')"> Campo é de preenchimento Obrigatório!</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="form-field">
       <mat-label>Descrição:</mat-label>
       <textarea matInput placeholder="Descrição do Produto" formControlName="description"></textarea>
       <mat-error *ngIf="productForm.get('description')?.hasError('required')">Campo é de preenchimento Obrigatório!</mat-error>

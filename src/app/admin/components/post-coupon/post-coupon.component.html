@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Adicionar Cupon</h2>
+
+  <form [formGroup]="couponForm" (ngSubmit)="addCoupon()">
+    <mat-form-field appeanrance="outline" class="form-field">
+      <mat-label>Nome:</mat-label>
+      <input matInput type="text" placeholder="Nome" formControlName="name">
+      <mat-error *ngIf="couponForm.get('name')?.hasError('required')">Campo de preenchimento obrigatório.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appeanrance="outline" class="form-field">
+      <mat-label>Código:</mat-label>
+      <input matInput type="text" placeholder="Código" formControlName="code">
+      <mat-error *ngIf="couponForm.get('code')?.hasError('required')">Campo de preenchimento obrigatório.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appeanrance="outline" class="form-field">
+      <mat-label>Desconto %:</mat-label>
+      <input matInput type="number" placeholder="Desconto %" formControlName="discount">
+      <mat-error *ngIf="couponForm.get('discount')?.hasError('required')">Campo de preenchimento
+        obrigatório.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appeanrance="outline" class="form-field">
+      <mat-label>Validade do Cupom:</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="expirationDate">
+      <mat-hint>DD/MM/AAAA</mat-hint>
+
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="couponForm.get('expirationDate')?.hasError('required')">Campo de preenchimento
+        obrigatório.</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Adicionar Cupom</button>
+
+  </form>
+</div><!--container-->

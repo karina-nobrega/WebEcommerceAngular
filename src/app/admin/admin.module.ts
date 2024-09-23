@@ -7,12 +7,16 @@ import { AdminComponent } from './admin.component';
 import { AngularMaterialModule } from '../angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PostCategoryComponent } from './components/post-category/post-category.component';
+import { PostProductComponent } from './components/post-product/post-product.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    DashboardComponent
+    DashboardComponent,
+    PostCategoryComponent,
+    PostProductComponent
   ],
   imports: [
     CommonModule,

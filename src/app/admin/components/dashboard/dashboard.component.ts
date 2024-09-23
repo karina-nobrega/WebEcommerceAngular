@@ -18,7 +18,7 @@ export class DashboardComponent {
     private adminService: AdminService,
     private fb: FormBuilder,
     private snackBar: MatSnackBar
-    ) { }
+  ) {}
 
   ngOnInit() {
     this.getAllProducts();
@@ -29,7 +29,7 @@ export class DashboardComponent {
 
   getAllProducts() {
     this.products = [];
-    this.adminService.getAllProducts().subscribe(res => {
+    this.adminService.getAllProducts().subscribe((res) => {
       res.forEach(element => {
         element.processedImg = 'data:image/jpeg;base64,' + element.byteImg;
         this.products.push(element);
@@ -41,7 +41,7 @@ export class DashboardComponent {
   submitForm() {
     this.products = [];
     const title = this.searchProductForm.get('title')!.value;
-    this.adminService.getAllProductByName(title).subscribe(res => {
+    this.adminService.getAllProductByName(title).subscribe((res) => {
       res.forEach(element => {
         element.processedImg = 'data:image/jpeg;base64,' + element.byteImg;
         this.products.push(element);
@@ -51,7 +51,7 @@ export class DashboardComponent {
   }
 
   deleteProduct(productId: any) {
-    this.adminService.deleteProduct(productId).subscribe(res => {
+    this.adminService.deleteProduct(productId).subscribe((res) => {
       if (res.body == null) {
         this.snackBar.open('Produto Excluido com Sucesso!', 'X', {
           duration: 5000
