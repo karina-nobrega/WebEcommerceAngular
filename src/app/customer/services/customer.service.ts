@@ -63,7 +63,27 @@ export class CustomerService {
 
   applyCoupon(code: any): Observable<any> {
     const userId = UserStorageService.getUserId()
-    return this.http.get(BASIC_URL + `api/customer/coupon/${code}`, {
+    return this.http.get(BASIC_URL + `api/customer/coupon/${userId}/${code}`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  placeOrder(orderDto: any): Observable<any> {
+    orderDto.userId = UserStorageService.getUserId()
+    return this.http.post(BASIC_URL + `api/customer/placeOrder`, orderDto, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  getOrdersByUserId(): Observable<any> {
+    const userId = UserStorageService.getUserId()
+    return this.http.get(BASIC_URL + `api/customer/placeOrder/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  getOrderedProducts(orderId: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/customer/ordered-products/${orderId}`, {
       headers: this.createAuthorizationHeader(),
     })
   }

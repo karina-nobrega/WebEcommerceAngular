@@ -1,5 +1,6 @@
+import { PlaceOrderComponent } from './../place-order/place-order.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomerService } from './../../../services/customer.service';
+import { CustomerService } from '../../services/customer.service';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -68,5 +69,9 @@ export class CartComponent {
       this.snackbar.open('Quantidade de produto reduzida', 'X', { duration: 5000 });
       this.getCart();
     })
+  }
+
+  placeOrder(){
+    this.dialog.open(PlaceOrderComponent);
   }
 }

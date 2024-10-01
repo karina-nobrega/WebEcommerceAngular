@@ -1,6 +1,10 @@
+import { UpdateProductComponent } from './admin/components/update-product/update-product.component';
+import { MyOrdersComponent } from './customer/components/my-orders/my-orders.component';
+import { OrdersComponent } from './admin/components/orders/orders.component';
+import { PlaceOrderComponent } from './customer/components/place-order/place-order.component';
 import { CouponsComponent } from './admin/components/coupons/coupons.component';
 import { PostCouponComponent } from './admin/components/post-coupon/post-coupon.component';
-import { CartComponent } from './customer/components/dashboard/cart/cart.component';
+import { CartComponent } from './customer/components/cart/cart.component';
 import { RouterModule } from '@angular/router';
 
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -17,6 +21,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { PostCategoryComponent } from './admin/components/post-category/post-category.component';
 import { PostProductComponent } from './admin/components/post-product/post-product.component';
 import { DashboardComponent } from './customer/components/dashboard/dashboard.component';
+import { PostProductFaqComponent } from './admin/components/post-product-faq/post-product-faq.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { DashboardComponent } from './customer/components/dashboard/dashboard.co
     PostCouponComponent,
     DashboardComponent,
     CartComponent,
-    CouponsComponent
+    CouponsComponent,
+    PlaceOrderComponent,
+    OrdersComponent,
+    MyOrdersComponent,
+    PostProductFaqComponent,
+    UpdateProductComponent
 
   ],
   imports: [
