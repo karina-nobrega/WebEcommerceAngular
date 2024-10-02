@@ -1,3 +1,6 @@
+import { ViewWishlistComponent } from './customer/components/view-wishlist/view-wishlist.component';
+import { ViewProductDetailComponent } from './customer/components/view-product-detail/view-product-detail.component';
+import { ReviewOrderedProductComponent } from './customer/components/review-ordered-product/review-ordered-product.component';
 import { UpdateProductComponent } from './admin/components/update-product/update-product.component';
 import { MyOrdersComponent } from './customer/components/my-orders/my-orders.component';
 import { OrdersComponent } from './admin/components/orders/orders.component';
@@ -38,7 +41,10 @@ import { PostProductFaqComponent } from './admin/components/post-product-faq/pos
     OrdersComponent,
     MyOrdersComponent,
     PostProductFaqComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    ReviewOrderedProductComponent,
+    ViewProductDetailComponent,
+    ViewWishlistComponent
 
   ],
   imports: [

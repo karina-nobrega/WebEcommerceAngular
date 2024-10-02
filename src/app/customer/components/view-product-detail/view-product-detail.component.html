@@ -1,0 +1,48 @@
+<div class="center-container" *ngIf="product">
+  <div class="product-card">
+    <div class="product-image">
+      <img [src]="product.processedImg" alt="{{ product.name }} Image">
+    </div><!--product-image-->
+    <div class="product-details">
+      <h2>{{ product.name }}</h2>
+      <p class="description">{{ product.description }}</p>
+      <p class="price"> {{ product.price }}</p>
+      <p class="category">Categoria: {{ product.category }}</p>
+      <mat-icon class="heart-icon" (click)="addToWishlist()">favorite_border</mat-icon>
+    </div>
+  </div><!--product-card-->
+</div><!--center-container-->
+
+<h1 class="section-heading" *ngIf="reviews.length>0">Comentários de Clientes</h1>
+
+<div class="review-list" *ngIf="reviews">
+  <div class="center-container">
+    <div class="review-card" *ngFor="let review of reviews">
+      <div class="review-image">
+        <img [src]="review.processedImg" *ngIf="review.processedImg" alt="{{ review.description}} Image"
+          class="small-image">
+      </div><!--review-image-->
+      <div class="review-details">
+        <h2>{{ review.description }}</h2>
+        <div class="details-row">
+          <p class="rating">Avaliação: {{ review.rating }}</p>
+          <p class="username">Nome do Usuário: {{ review.username }} </p>
+        </div><!--details-row-->
+      </div><!--review-details-->
+    </div><!--review-card-->
+  </div><!--center-container-->
+</div><!--review-list-->
+
+<h1 class="section-heading" *ngIf="FAQS.length > 0">Perguntas Frequentes</h1>
+<div class="faq-list" *ngIf="FAQS">
+  <div class="center-container">
+    <div class="faq-card" *ngFor="let faq of FAQS">
+      <div class="faq-details">
+        <p class="question">Pergunta:</p>
+        <p class="question-text">{{ faq.question }}</p>
+        <p class="answer">Resposta:</p>
+        <p class="answer-text"> {{faq.answer }}</p>
+      </div><!--faq-details-->
+    </div><!--faq-card-->
+  </div><!--center-container-->
+</div><!--faq-list-->
