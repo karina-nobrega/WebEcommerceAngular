@@ -35,7 +35,7 @@ export class AdminService {
     return this.http.put(BASIC_URL + `api/admin/product/${productId}`, productDto, {
       headers: this.createAuthorizationHeader(),
     })
-  } 
+  }
 
   getAllProducts(): Observable<any> {
     return this.http.get(BASIC_URL + 'api/admin/products', {
@@ -89,6 +89,12 @@ export class AdminService {
     return this.http.post(BASIC_URL + `api/admin/faq/${productId}`, faqDto, {
       headers: this.createAuthorizationHeader(),
     })
+  }
+
+  getAnalytics(): Observable<any> {
+    return this.http.get(BASIC_URL + 'api/admin/order/analytics', {
+      headers: this.createAuthorizationHeader(),
+    });
   }
 
   private createAuthorizationHeader(): HttpHeaders {

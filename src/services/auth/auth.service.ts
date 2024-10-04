@@ -15,7 +15,7 @@ export class AuthService {
     private http: HttpClient,
     private userStorageService: UserStorageService) { }
 
-  register(signupRequest:any): Observable<any> {
+  register(signupRequest: any): Observable<any> {
     return this.http.post(BASIC_URL + "sign-up", signupRequest);
   }
 
@@ -36,5 +36,9 @@ export class AuthService {
         return false;
       })
     )
+  }
+
+  getOrderByTrackingId(trackingId: number): Observable<any> {
+    return this.http.get(BASIC_URL + `order/${trackingId}`);
   }
 }

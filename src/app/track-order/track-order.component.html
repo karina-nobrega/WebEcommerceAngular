@@ -1,0 +1,43 @@
+<form [formGroup]="searchOrderForm" class="search-form" (submit)="submitForm()">
+  <mat-form-field appearance="outline" class="search-input">
+    <mat-label>Insira o código de Rastreio:</mat-label>
+    <input matInput formControlName="trackingId">
+    <button mat-button matSuffix color="primary" [disabled]="searchOrderForm.invalid">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
+<div class="order-details-container" *ngIf="order">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Detalhes do Pedido</mat-card-title>
+    </mat-card-header>
+
+    <div class="order-detail">
+      Código ID:
+      <strong>{{ order.trackingId }}</strong>
+    </div><!--order-detail-->
+    <div class="order-detail">
+      Nome do Usuário:
+      <strong>{{ order.userName }}</strong>
+    </div><!--order-detail-->
+    <div class="order-detail">
+      Endereço:
+      <strong>{{ order.address }}</strong>
+    </div><!--order-detail-->
+    <div class="order-detail">
+      Valor:
+      <strong>{{ order.amount | currency }}</strong>
+    </div><!--order-detail-->
+    <div class="order-detail">
+      Status:
+      <strong>{{ order.orderStatus }}</strong>
+    </div><!--order-detail-->
+    <div class="order-detail">
+      Data:
+      <strong>{{ order.date | date }}</strong>
+    </div><!--order-detail-->
+
+  </mat-card>
+</div><!--order-details-container-->

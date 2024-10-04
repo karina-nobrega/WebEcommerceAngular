@@ -1,0 +1,50 @@
+<div class="order-status-container">
+  <mat-card class="order-status-card">
+    <mat-card-header>
+      <div class="status-avatar">
+        I
+      </div><!--status-avatar-->
+      <mat-card-title>Inserido</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="status-value">{{ data.placed }}</div>
+    </mat-card-content>
+  </mat-card><!--order-status-card-->
+
+  <mat-card class="order-status-card">
+    <mat-card-header>
+      <div class="status-avatar">
+        D
+      </div><!--status-avatar-->
+      <mat-card-title>Despachado</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="status-value">{{ data.shipped }}</div>
+    </mat-card-content>
+  </mat-card><!--order-status-card-->
+
+  <mat-card class="order-status-card">
+    <mat-card-header>
+      <div class="status-avatar">
+        E
+      </div><!--status-avatar-->
+      <mat-card-title>Entregue</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="status-value">{{ data.delivered }}</div>
+    </mat-card-content>
+  </mat-card><!--order-status-card-->
+
+  <mat-card class="order-status-card">
+    <mat-card-header>
+      <div class="status-avatar">
+        C
+      </div><!--status-avatar-->
+      <mat-card-title>Cancelado</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="status-value">{{ data.cancelled }}</div>
+    </mat-card-content>
+  </mat-card><!--order-status-card-->
+
+</div><!--order-status-container-->
